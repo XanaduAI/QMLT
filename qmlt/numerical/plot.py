@@ -82,10 +82,15 @@ Auxillary functions
 Code details
 ------------
 """
+import os
 from itertools import zip_longest
 import numpy as np
 
 try:
+    import matplotlib as mpl
+    if os.environ.get('DISPLAY','') == '':
+        print('no display found. Using non-interactive Agg backend')
+        mpl.use('Agg')
     from matplotlib import pyplot as plt
 except:
     raise ImportError("To use the plotting functions, matplotlib must be installed")
