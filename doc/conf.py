@@ -324,7 +324,7 @@ html_theme_options = {
     # "projectlink": "http://myproject.url",
 }
 
-edit_on_github_project = 'XanaduAI/MLtoolbox'
+edit_on_github_project = 'XanaduAI/QMLT'
 edit_on_github_branch = 'master/doc'
 
 # -- Options for LaTeX output ---------------------------------------------
