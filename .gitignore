@@ -1,0 +1,17 @@
+*~
+*.pyc
+doc/_build
+build
+dist
+qit.egg-info
+.idea
+examples/*ipynp*
+*.egg-info*
+/examples/tf/logsAUTO/*
+/examples/numeric/logsNUM/*
+/examples/tf/logsAUTO/
+/examples/numeric/logsNUM/
+/tests/logsAUTO
+/tests/logsNUM
+/logsAUTO
+/logsNUM

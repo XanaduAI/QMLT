@@ -1,0 +1,14 @@
+language: python
+cache: pip
+python:
+  - 3.5
+env:
+install:
+  - pip install -r requirements.txt
+  - pip install wheel codecov
+  - python3 setup.py bdist_wheel
+  - pip install dist/qmlt*.whl
+script:
+  - make coverage
+after_success:
+  - codecov

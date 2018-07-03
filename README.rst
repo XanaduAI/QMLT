@@ -26,6 +26,8 @@ The Quantum Machine Learning Toolbox supports:
 
 * Parallel computation/GPU usage for TensorFlow-based models
 
+To get started, please see the online `documentation <https://qmlt.readthedocs.io>`_.
+
 
 Installation
 ============

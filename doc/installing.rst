@@ -11,7 +11,7 @@ Before installing the Quantum Machine Learning Toolbox, the following dependenci
 * `Python <http://python.org/>`_ >= 3.5
 * `matplotlib <https://matplotlib.org/>`_ >= 2.0
 * `scikit-learn <http://scikit-learn.org/stable/>`_ >= 0.19
-* `Strawberry Fields <https://github.com/XanaduAI/strawberryfields>`_ >= 0.6.0b
+* `Strawberry Fields <https://github.com/XanaduAI/strawberryfields>`_ >= 0.7.3
 
 These packages will be installed automatically if using ``pip``, see below for details. For additional information on Strawberry Fields, please see the Strawberry Fields documentation.
 
