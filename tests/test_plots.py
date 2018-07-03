@@ -22,12 +22,17 @@ Unit tests for qmlt plots
 
 """
 import sys
+import os
 import unittest
 import importlib
 
 import numpy as np
-from matplotlib import pyplot as plt
-from matplotlib.testing.decorators import image_comparison
+
+import matplotlib as mpl
+if os.environ.get('DISPLAY','') == '':
+    print('no display found. Using non-interactive Agg backend')
+    mpl.use('Agg')
+import matplotlib.pyplot as plt
 
 import tensorflow as tf
 
