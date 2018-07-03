@@ -29,6 +29,10 @@ from copy import deepcopy
 import shutil
 import tensorflow as tf
 import numpy as np
+import matplotlib as mpl
+if os.environ.get('DISPLAY', '') == '':
+    print('no display found. Using non-interactive Agg backend')
+    mpl.use('Agg')
 import matplotlib.pyplot as plt
 from qmlt.numerical import CircuitLearner as Learner_num
 from qmlt.tf import CircuitLearner as Learner_tf

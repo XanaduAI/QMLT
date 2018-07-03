@@ -29,7 +29,7 @@ import importlib
 import numpy as np
 
 import matplotlib as mpl
-if os.environ.get('DISPLAY','') == '':
+if os.environ.get('DISPLAY', '') == '':
     print('no display found. Using non-interactive Agg backend')
     mpl.use('Agg')
 import matplotlib.pyplot as plt
