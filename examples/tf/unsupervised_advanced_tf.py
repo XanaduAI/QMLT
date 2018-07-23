@@ -33,7 +33,7 @@ import numpy as np
 import tensorflow as tf
 from qmlt.tf import CircuitLearner
 from qmlt.tf.helpers import make_param
-from qmlt.helpers import sample_from_distr
+from qmlt.helpers import sample_from_distribution
 
 
 # Number of layers
@@ -107,7 +107,7 @@ final_distribution = outcomes['outputs']
 # Use a helper function to sample fock states from this state.
 # They should show a similar distribution to the training data
 for i in range(10):
-    sample = sample_from_distr(distr=final_distribution)
+    sample = sample_from_distribution(distribution=final_distribution)
     print("Fock state sample {}:{} \n".format(i, sample))
 
 # Note: the learner really generalises. Sometimes (albeit rarely) it will

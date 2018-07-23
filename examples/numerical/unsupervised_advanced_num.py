@@ -33,7 +33,7 @@ import numpy as np
 from qmlt.numerical import CircuitLearner
 from qmlt.numerical.helpers import make_param
 from qmlt.numerical.regularizers import l2
-from qmlt.helpers import sample_from_distr
+from qmlt.helpers import sample_from_distribution
 
 
 # Number of layers
@@ -113,7 +113,7 @@ outcomes = learner.run_circuit()
 final_distribution = outcomes['outputs']
 
 for i in range(10):
-    sample = sample_from_distr(distr=final_distribution)
+    sample = sample_from_distribution(distribution=final_distribution)
     print("Fock state sample {}:{} \n".format(i, sample))
 
 # Note: the learner really generalises. Sometimes (albeit rarely) it will
