@@ -36,7 +36,7 @@ steps = 100
 # Define the variational circuit and its output.
 def circuit(X):
     # Create a parameter with an initial value of 2.
-    phi = make_param('phi', constant=2.)
+    params = [make_param(name='phi', constant=2.)]
 
     eng, q = sf.Engine(2)
 
@@ -44,7 +44,7 @@ def circuit(X):
         # Note that we are feeding 1-d tensors into gates, not scalars!
         Dgate(X[:, 0], 0.) | q[0]
         Dgate(X[:, 1], 0.) | q[1]
-        BSgate(phi=phi) | (q[0], q[1])
+        BSgate(phi=params[0]) | (q[0], q[1])
         BSgate() | (q[0], q[1])
 
     # We have to tell the engine how big the batches (first dim of X) are
@@ -55,8 +55,8 @@ def circuit(X):
     # Define the output as the probability of measuring |0,2> as opposed to |2,0>
     p0 = state.fock_prob([0, 2])
     p1 = state.fock_prob([2, 0])
-    normalisation = p0 + p1 + 1e-10
-    circuit_output = p1/normalisation
+    normalization = p0 + p1 + 1e-10
+    circuit_output = p1 / normalization
 
     return circuit_output
 

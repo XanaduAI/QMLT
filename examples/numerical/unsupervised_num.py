@@ -61,10 +61,6 @@ def circuit(params):
     state = eng.run('fock', cutoff_dim=7)
     circuit_output = state.all_fock_probs()
 
-
-    #TODO: DELETE
-    circuit_output = np.reshape(circuit_output, [7, 7])
-
     return circuit_output
 
 

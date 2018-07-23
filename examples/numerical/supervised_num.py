@@ -33,7 +33,7 @@ from qmlt.numerical.losses import square_loss
 steps = 100
 
 # Create a parameter with an initial value of 2.
-my_init_params = [make_param(constant=2.)]
+my_init_params = [make_param(name='phi', constant=2.)]
 
 
 # Define the variational circuit and its output
@@ -57,9 +57,9 @@ def circuit(X, params):
         # Define the output as the probability of measuring |0,2> as opposed to |2,0>
         p0 = state.fock_prob([0, 2])
         p1 = state.fock_prob([2, 0])
-        normalisation = p0 + p1 + 1e-10
-        outp = p1/normalisation
-        return outp
+        normalization = p0 + p1 + 1e-10
+        output = p1 / normalization
+        return output
 
     # Apply the single circuit to every input in the batch
     circuit_output = [single_input_circuit(x) for x in X]

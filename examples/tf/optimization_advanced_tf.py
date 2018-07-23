@@ -36,11 +36,11 @@ from qmlt.tf import CircuitLearner
 def circuit():
 
     # This time we want to keep the parameter small via regularization and visualize its evolution in tensorboard
-    alpha = make_param(name='alpha', constant=0.1, regularize=True, monitor=True)
+    params = [make_param(name='alpha', constant=0.1, regularize=True, monitor=True)]
     eng, q = sf.Engine(1)
 
     with eng:
-        Dgate(alpha) | q[0]
+        Dgate(params[0]) | q[0]
 
     state = eng.run('tf', cutoff_dim=7, eval=False)
 
@@ -90,7 +90,7 @@ learner.train_circuit(steps=50, tensors_to_log=log)
 final_params = learner.get_circuit_parameters()
 # final_params is a dictionary
 for name, value in final_params.items():
-    print("\nFinal parameter {} has the value {}.".format(name, value))
+    print("Parameter {} has the final value {}.".format(name, value))
 
 # To monitor the training, install tensorboard, navigate with a terminal to the directory that contains
 # the newly created folder "logAUTO" and run "tensorboard --logdir=logAUTO". This should return a link
