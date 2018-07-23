@@ -59,6 +59,14 @@ Installation of SFOpenBoson, as well as all required Python packages mentioned a
     $ python -m pip install qmlt
 
 
+Tests
+=====
+
+To run all tests please run the following line from the main directory:
+::
+
+    $ python -m unittest discover tests
+
 Code authors
 ============
 
