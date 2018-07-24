@@ -53,7 +53,7 @@ To get started, please see the online `documentation <https://qmlt.readthedocs.i
 Installation
 ============
 
-Installation of SFOpenBoson, as well as all required Python packages mentioned above, can be done using pip:
+Installation of the QMLT, as well as all required Python packages mentioned above, can be done using pip:
 ::
 
     $ python -m pip install qmlt
