@@ -59,6 +59,14 @@ Installation of the QMLT, as well as all required Python packages mentioned abov
     $ python -m pip install qmlt
 
 
+Tests
+=====
+
+To run all tests please run the following line from the main directory:
+::
+
+    $ python -m unittest discover tests
+
 Code authors
 ============
 

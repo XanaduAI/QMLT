@@ -25,7 +25,7 @@ Unit tests for qmlt helpers
 import unittest
 import tensorflow as tf
 import numpy as np
-from qmlt.helpers import sample_from_distr
+from qmlt.helpers import sample_from_distribution
 from qmlt.numerical.helpers import make_param as make_param_num
 from qmlt.tf.helpers import make_param as make_param_tf
 
@@ -185,11 +185,11 @@ class TestSampling(BaseHelpersTest):
 
     def setUp(self):
         super().setUp()
-        self.distr = np.array([[0., 1.], [0., 0.]])
+        self.distribution = np.array([[0., 1.], [0., 0.]])
 
     def test_samplefromdistr_returns_sample(self):
         desired_result = np.array([0, 1])
-        self.assertAlmostEqualArray(sample_from_distr(self.distr), desired_result)
+        self.assertAlmostEqualArray(sample_from_distribution(self.distribution), desired_result)
 
 
 if __name__ == "__main__":

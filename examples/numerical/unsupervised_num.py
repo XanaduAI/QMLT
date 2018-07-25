@@ -32,7 +32,7 @@ import numpy as np
 from qmlt.numerical import CircuitLearner
 from qmlt.numerical.helpers import make_param
 from qmlt.numerical.regularizers import l2
-from qmlt.helpers import sample_from_distr
+from qmlt.helpers import sample_from_distribution
 
 
 # Create some parameters. Mark some of them to be regularized.
@@ -60,10 +60,6 @@ def circuit(params):
 
     state = eng.run('fock', cutoff_dim=7)
     circuit_output = state.all_fock_probs()
-
-
-    #TODO: DELETE
-    circuit_output = np.reshape(circuit_output, [7, 7])
 
     return circuit_output
 
@@ -112,7 +108,7 @@ final_distribution = outcomes['outputs']
 # Use a helper function to sample fock states from this state.
 # They should show a similar distribution to the training data
 for i in range(10):
-    sample = sample_from_distr(distr=final_distribution)
+    sample = sample_from_distribution(distribution=final_distribution)
     print("Fock state sample {}:{}".format(i, sample))
 
 

@@ -33,11 +33,12 @@ import numpy as np
 from qmlt.numerical import CircuitLearner
 from qmlt.numerical.helpers import make_param
 from qmlt.numerical.regularizers import l2
-from qmlt.helpers import sample_from_distr
+from qmlt.helpers import sample_from_distribution
 
 
 # Number of layers
 depth = 5
+steps = 500
 
 # This time we use a dynamic way to create parameters for each layer
 my_params = []
@@ -74,9 +75,6 @@ def circuit(params):
     state = eng.run('fock', cutoff_dim=7)
     circuit_output = state.all_fock_probs()
 
-    #TODO: delete
-    circuit_output = np.reshape(circuit_output, [7, 7])
-
     return circuit_output
 
 
@@ -109,13 +107,13 @@ hyperparams = {'circuit': circuit,
 
 learner = CircuitLearner(hyperparams=hyperparams)
 
-learner.train_circuit(X=X_train, steps=500)
+learner.train_circuit(X=X_train, steps=steps)
 
 outcomes = learner.run_circuit()
 final_distribution = outcomes['outputs']
 
 for i in range(10):
-    sample = sample_from_distr(distr=final_distribution)
+    sample = sample_from_distribution(distribution=final_distribution)
     print("Fock state sample {}:{} \n".format(i, sample))
 
 # Note: the learner really generalises. Sometimes (albeit rarely) it will

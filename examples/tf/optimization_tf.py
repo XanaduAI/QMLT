@@ -34,12 +34,12 @@ from qmlt.tf.helpers import make_param
 def circuit():
 
     # Create a parameter with an initial value of 0.1
-    alpha = make_param(name='alpha', constant=0.1)
+    params = [make_param(name='alpha', constant=0.1)]
 
     eng, q = sf.Engine(1)
 
     with eng:
-        Dgate(alpha) | q[0]
+        Dgate(params[0]) | q[0]
 
     state = eng.run('tf', cutoff_dim=7, eval=False)
 

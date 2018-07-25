@@ -53,9 +53,9 @@ def circuit(X, params):
 
         p0 = state.fock_prob([0, 2])
         p1 = state.fock_prob([2, 0])
-        normalisation = p0 + p1 + 1e-10
-        outp = p1/normalisation
-        return outp
+        normalization = p0 + p1 + 1e-10
+        output = p1 / normalization
+        return output
 
     circuit_output = [single_input_circuit(x) for x in X]
 

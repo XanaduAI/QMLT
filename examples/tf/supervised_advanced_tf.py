@@ -32,20 +32,20 @@ from qmlt.tf.helpers import make_param
 from qmlt.tf import CircuitLearner
 
 
-steps = 100
+steps = 200
 batch_size = 2
 
 
 def circuit(X):
 
-    phi = make_param('phi', constant=2., monitor=True)
+    params = [make_param(name='phi', constant=2., monitor=True)]
 
     eng, q = sf.Engine(2)
 
     with eng:
         Dgate(X[:, 0], 0.) | q[0]
         Dgate(X[:, 1], 0.) | q[1]
-        BSgate(phi=phi) | (q[0], q[1])
+        BSgate(phi=params[0]) | (q[0], q[1])
         BSgate() | (q[0], q[1])
 
     num_inputs = X.get_shape().as_list()[0]
@@ -53,8 +53,8 @@ def circuit(X):
 
     p0 = state.fock_prob([0, 2])
     p1 = state.fock_prob([2, 0])
-    normalisation = p0 + p1 + 1e-10
-    circuit_output = p1/normalisation
+    normalization = p0 + p1 + 1e-10
+    circuit_output = p1 / normalization
 
     return circuit_output
 
@@ -88,10 +88,10 @@ hyperparams = {'circuit': circuit,
                'loss': myloss,
                'optimizer': 'SGD',
                'init_learning_rate': 0.5,
-               'decay': 0.1,
+               'decay': 0.01,
                'print_log': True,
-               'warm_start': False,
-               'log_every': 10
+               'log_every': 10,
+               'warm_start': False
                }
 
 learner = CircuitLearner(hyperparams=hyperparams)

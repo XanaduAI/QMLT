@@ -29,7 +29,7 @@ from qmlt.numerical import CircuitLearner
 from qmlt.numerical.helpers import make_param
 
 # Create a parameter with an initial value of 0.1
-my_init_params = [make_param(constant=0.1, name='alpha')]
+my_init_params = [make_param(name='alpha', constant=0.1)]
 
 
 # Define the variational circuit and its output

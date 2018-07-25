@@ -31,7 +31,7 @@ Summary
 -------
 
 .. autosummary::
-    sample_from_distr
+    sample_from_distribution
 
 Code details
 ------------
@@ -41,26 +41,26 @@ Code details
 import numpy as np
 
 
-def sample_from_distr(distr):
+def sample_from_distribution(distribution):
     r"""
     Sample a Fock state from a nested probability distribution of Fock states.
 
     Args:
-        distr (ndarray): Nested array containing probabilities of Fock state.
-          Fock state :math:`|i,j,k \rangle` is retrieved by ``distr([i,j,k])``.
+        distribution (ndarray): Nested array containing probabilities of Fock state.
+          Fock state :math:`|i,j,k \rangle` is retrieved by ``distribution([i,j,k])``.
           Can be the result of :func:`state.all_fock_probs`.
 
     Return: List of photon numbers representing a Fock state.
     """
 
-    distr = np.array(distr)
-    cutoff = distr.shape[0]
-    num_modes = len(distr.shape)
+    distribution = np.array(distribution)
+    cutoff = distribution.shape[0]
+    num_modes = len(distribution.shape)
 
-    probs_flat = np.reshape(distr, (-1))
+    probs_flat = np.reshape(distribution, (-1))
     indices_flat = np.arange(len(probs_flat))
     indices = np.reshape(indices_flat, [cutoff] * num_modes)
-    smpl_index = np.random.choice(indices_flat, p=probs_flat / sum(probs_flat))
-    fock_state = np.asarray(np.where(indices == smpl_index)).flatten()
+    sample_index = np.random.choice(indices_flat, p=probs_flat / sum(probs_flat))
+    fock_state = np.asarray(np.where(indices == sample_index)).flatten()
 
     return fock_state

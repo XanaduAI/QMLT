@@ -33,7 +33,7 @@ from qmlt.numerical.regularizers import l2
 
 # This time we want to keep the parameter small via regularization and monitor its evolution
 # By logging it into a file and plotting it
-my_init_params = [make_param(constant=0.1, name='alpha', regularize=True, monitor=True)]
+my_init_params = [make_param(name='alpha', constant=0.1, regularize=True, monitor=True)]
 
 
 def circuit(params):
