@@ -148,7 +148,7 @@ def _plot(x, y, ax=None, xlabel=None, ylabel=None, **plot_kw):
     if xlabel is not None:
         ax.set_xlabel(xlabel)
     if ylabel is not None:
-        ax.set_ylabel(ylabel)
+        ax.set_title(ylabel)
 
     ax.plot(x, y, **plot_kw)
 
@@ -285,14 +285,14 @@ def plot_all(logfile, x='global_step', y=None, save_filename=None,
 
     for idx, (yd, yl, a) in enumerate(zip_longest(ydata, ylabels, ax.ravel())):
         # get 2D grid location
-        # loc = np.array(np.unravel_index([idx], (rows, cols))).flatten()
+        loc = np.array(np.unravel_index([idx], (rows, cols))).flatten()
 
         # only label x-axis if on the bottom row
         if yd is not None:
-            # if loc[0] == rows-1:
-            a = _plot(xdata, yd, xlabel=x, ylabel=yl, ax=a, **plot_kw)
-            # else:
-                # a = _plot(xdata, yd, ylabel=yl, ax=a, **plot_kw)
+            if loc[0] == rows - 1:
+                a = _plot(xdata, yd, xlabel=x, ylabel=yl, ax=a, **plot_kw)
+            else:
+                a = _plot(xdata, yd, ylabel=yl, ax=a, **plot_kw)
         else:
             a.axis('off')
 
