@@ -103,12 +103,12 @@ class TestPlot(unittest.TestCase):
         x_label = res.xaxis.get_label().get_text()
         self.assertEqual('Test', x_label)
 
-    def test_ylabel(self):
+    def test_title(self):
         fig, ax = plt.subplots(1, 1)
         x = np.arange(0, 1, 0.1)
         y = np.sin(x)
         res = plot._plot(x, y, ax, ylabel='Test')
-        y_label = res.yaxis.get_label().get_text()
+        y_label = res.get_title()
         self.assertEqual('Test', y_label)
 
 
