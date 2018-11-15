@@ -123,7 +123,7 @@ def make_param(name=None, stdev=None, mean=0., interval=None, constant=None, sha
     return var
 
 
-def sample_from_distribution_tf(distribution):
+def sample_from_distribution(distribution):
     r"""
     Sample a Fock state from a nested probability distribution of Fock states.
 
