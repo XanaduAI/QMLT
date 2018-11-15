@@ -25,7 +25,8 @@ Unit tests for qmlt helpers
 import unittest
 import tensorflow as tf
 import numpy as np
-from qmlt.helpers import sample_from_distribution
+from qmlt.numerical.helpers import sample_from_distribution as sample_from_distribution_num
+from qmlt.tf.helpers import sample_from_distribution as sample_from_distribution_tf
 from qmlt.numerical.helpers import make_param as make_param_num
 from qmlt.tf.helpers import make_param as make_param_tf
 
@@ -178,7 +179,8 @@ class TestMakeParamsTf(BaseHelpersTest):
         self.sess.run(tf.global_variables_initializer())
         self.assertEqual(p.shape, self.shape)
 
-class TestSampling(BaseHelpersTest):
+
+class TestSamplingNum(BaseHelpersTest):
     """
     Tests that the sampling helper returns a sample from a distribution.
     """
@@ -187,9 +189,27 @@ class TestSampling(BaseHelpersTest):
         super().setUp()
         self.distribution = np.array([[0., 1.], [0., 0.]])
 
-    def test_samplefromdistr_returns_sample(self):
+    def test_samplefromdistribution_returns_sample(self):
         desired_result = np.array([0, 1])
-        self.assertAlmostEqualArray(sample_from_distribution(self.distribution), desired_result)
+        self.assertAlmostEqualArray(sample_from_distribution_num(self.distribution), desired_result)
+
+class TestSamplingTf(BaseHelpersTest):
+    """
+    Tests that the sampling helper returns a sample from a distribution.
+    """
+
+    def setUp(self):
+        super().setUp()
+        distribution_array = np.array([[0., 1.], [0., 0.]])
+        self.distribution = tf.convert_to_tensor(distribution_array)
+        self.sess = tf.Session()
+
+    def test_samplefromdistribution_returns_sample(self):
+        desired_result = np.array([0, 1])
+        self.sess.run(tf.global_variables_initializer())
+        sample = sample_from_distribution_tf(self.distribution)
+        sample_array = self.sess.run(sample)
+        self.assertAlmostEqualArray(sample_array, desired_result)
 
 
 if __name__ == "__main__":
@@ -198,7 +218,7 @@ if __name__ == "__main__":
 
     # run the tests in this file
     suite = unittest.TestSuite()
-    for t in [TestMakeParamsNum, TestMakeParamsTf, TestSampling]:
+    for t in [TestMakeParamsNum, TestMakeParamsTf, TestSamplingNum, TestSamplingTf]:
         ttt = unittest.TestLoader().loadTestsFromTestCase(t)
         suite.addTests(ttt)
 
