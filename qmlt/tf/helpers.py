@@ -121,3 +121,27 @@ def make_param(name=None, stdev=None, mean=0., interval=None, constant=None, sha
                 tf.summary.scalar(name=name+'_'+str(idx), tensor=v)
 
     return var
+
+
+def sample_from_distribution_tf(distribution):
+    r"""
+    Sample a Fock state from a nested probability distribution of Fock states.
+
+    Args:
+        distribution (tensor): Tensor containing probabilities of Fock state.
+          Can be the result of :func:`state.all_fock_probs`.
+
+    Return: Tensor of photon numbers representing a Fock state.
+    """
+    cutoff = distribution.shape[0].value
+    num_modes = len(distribution.shape)
+
+    probs_flat = tf.reshape(distribution, [-1])
+    rescaled_probs = tf.expand_dims(tf.log(probs_flat), 0)
+    indices_flat = tf.range(probs_flat.shape[0])
+    indices = tf.reshape(indices_flat, [cutoff] * num_modes)
+
+    sample_index = tf.squeeze(tf.multinomial(rescaled_probs, 1),[0])
+    fock_state = tf.reshape(tf.where(tf.equal(indices, tf.cast(sample_index, dtype=tf.int32))), [-1])
+
+    return fock_state
