@@ -32,7 +32,7 @@ import numpy as np
 from qmlt.numerical import CircuitLearner
 from qmlt.numerical.helpers import make_param
 from qmlt.numerical.regularizers import l2
-from qmlt.helpers import sample_from_distribution
+from qmlt.numerical.helpers import sample_from_distribution
 
 
 # Create some parameters. Mark some of them to be regularized.
