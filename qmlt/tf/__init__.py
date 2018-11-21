@@ -36,8 +36,10 @@ There are three basic functionalities. The circuit can be trained, run with the 
 The TensorFlow learner module has been designed for the training of continuous-variable circuits written in StrawberryFields or
 BlackBird using the 'tf' backend only, but is in principle able to train any user-provided model coded in tensorflow.
 
-In contrary to the Numerical Learner, TensorFlow doesn't have plotting functions. 
-The easiest way to plot the parameters of the learner is by using [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard).
+.. note::
+
+    Contrary to the :mod:`numerical learner <qmlt.numerical>`, the TensorFlow learner doesn't contain built-in plotting functions.
+    The recommended method of visualizing the learner parameters is by using `TensorBoard <https://www.tensorflow.org/guide/summaries_and_tensorboard>`_.
 
 CircuitLearner class
 ---------------------
