@@ -92,8 +92,7 @@ final_distribution = outcomes['outputs']
 
 # Use a helper function to sample fock states from this state.
 # They should show a similar distribution to the training data.
-# If the output of the function is a tensor, 
-# you can use sample_from_distribution from qmlt.tf.helpers
+# In case of tensor data use sample_from_distribution from qmlt.tf.helpers
 for i in range(10):
     sample = sample_from_distribution(distribution=final_distribution)
     print("Fock state sample {}:{} \n".format(i, sample))
