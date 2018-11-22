@@ -141,7 +141,7 @@ def sample_from_distribution(distribution):
     indices_flat = tf.range(probs_flat.shape[0])
     indices = tf.reshape(indices_flat, [cutoff] * num_modes)
 
-    sample_index = tf.squeeze(tf.multinomial(rescaled_probs, 1),[0])
+    sample_index = tf.squeeze(tf.multinomial(rescaled_probs, 1), [0])
     fock_state = tf.reshape(tf.where(tf.equal(indices, tf.cast(sample_index, dtype=tf.int32))), [-1])
 
     return fock_state
