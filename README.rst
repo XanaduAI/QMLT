@@ -24,6 +24,8 @@ Quantum Machine Learning Toolbox (QMLT)
 
 The Quantum Machine Learning Toolbox (QMLT) is a `Strawberry Fields <https://github.com/XanaduAI/strawberryfields>`_ application that simplifies the optimization of variational quantum circuits. Tasks for the QMLT range from variational eigensolvers and unitary learning to supervised and unsupervised machine learning with models based on a variational circuit.
 
+> Notice: This code will not necessarily be maintained to support further releases of Strawberry Fields and other dependencies. We welcome bug reports and PRs but make no guarantee about fixes or responses.
+
 
 Features
 ========
