@@ -2,7 +2,7 @@ Quantum Machine Learning Toolbox (QMLT)
 ###########################################
 
 
-    Notice: This library is no longer actively maintained. Its spiritual successor is [PennyLane](https://github.com/XanaduAI/pennylane)
+    Notice: This library is no longer actively maintained. Its spiritual successor is _`PennyLane <https://github.com/XanaduAI/pennylane>`_
 
 .. image:: https://img.shields.io/travis/XanaduAI/QMLT/master.svg?style=for-the-badge
     :alt: Travis
